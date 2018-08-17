@@ -323,3 +323,6 @@ app.get('/products/:id', function (req, res) {
 app.listen(app.get('port'), function () {
   console.log('Server started at port 3000');
 });
+
+
+app.listen(PORT);
