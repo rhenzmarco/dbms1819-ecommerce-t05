@@ -1,0 +1,53 @@
+
+
+
+{{!-- <div class="container">
+	<div class="jumbotron mt-2">
+		<h1 class="mt-0 mb-5 text-center">{{title}}</h1>
+		<div class="row mx-4">
+			{{#each data}}
+			<div class="col-lg-4 col-md-4 col-sm-12 mb-4 mx-auto">
+				<div class="card center">
+					<a href="/products/{{this.id}}">
+						<img class="card-img-top" src="{{this.image}}">
+						<div class="text-box">
+								<h5 class="card-title text-center my-3">{{this.brand}} {{this.name}}</h5>
+						</div>
+					</a>
+				</div>
+			</div>
+			{{/each}}
+		</div>
+	</div>
+</div> --}}
+
+<h1 class="text-center">{{title}}</h1>
+
+<div class="container" >
+	<div class="product_row_css">
+		{{#each data}}
+			<div class="product_column_css product_container parent_el">
+				{{!-- <div class="hidden ">{{this.name}}</div>
+				<div class="hidden ">{{this.price}}</div>
+				<div class="hidden ">{{this.primary_picture}}</div> --}}
+				<a href="/products/{{this.id}}">
+				<img id="productImg" value="asd" class="imgPost" src="{{this.image}}" style="max-width: 275px">
+				<div class="product_overlay">
+					<form >
+						<input type="hidden" name="product_id" value="{{this.id}}">
+						<input type="hidden" name="product_type" value="{{this.type}}">
+						<input type="hidden" name="product_brand" value="{{this.brand}}">
+						<input type="hidden" name="product_name" value="{{this.name}}">
+						<input type="hidden" name="product_price" value="{{this.price}}">
+						<input type="hidden" name="product_primary_picture" value="{{this.primary_picture}}">
+						<input type="hidden" name="product_description" value="{{this.description}}">
+						{{!-- <input type="submit" name="" value="{{this.name}} {{this.price}}"  style="background-color:transparent; width: 100%; margin: 0px; height: 100%; border: 0px solid;text-align: center; padding: 15pt"> --}}
+						<button type="submit" name="" style="background-color:transparent; width: 100%; margin: 0px; height: 100%; border: 0px solid;text-align: center; padding-top: 5pt">{{this.name}}</br>Php {{this.price}}</button>
+					</form>
+				</div>
+			</div>
+		</a>
+
+		{{/each}}
+	</div>
+</div>

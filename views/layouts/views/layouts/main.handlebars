@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Team14 Audio</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="icon" href="/static/gemini.png">
+	<script src="/wp-includes/js/addInput.js" language="Javascript" type="text/javascript"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		@import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+
+    body {
+    	background: #FFFFFF;
+    	font-family: 'Open Sans', Arial, Helvetica, Sans-serif, Verdana, Tahoma;
+    }
+
+    #productImg {
+    border-radius: 5px;
+    /*cursor: pointer;*/
+    transition: 0.3s;
+    }
+
+    #productImg:hover {
+        opacity: 0.8;
+    }
+
+	.product_row_css {
+	    display: -ms-flexbox; /* IE 10 */
+	    display: flex;
+	    -ms-flex-wrap: wrap; /* IE 10 */
+	    flex-wrap: wrap;
+	    padding: 0 4px;
+	}
+
+	/* Create four equal columns that sits next to each other */
+	.product_column_css {
+	    -ms-flex: 25%; /* IE 10 */
+	    flex: 25%;
+	    padding: 0 0px;
+	}
+
+	.product_column_css img {
+	    margin-top: 5px;
+	    vertical-align: middle;
+	}
+
+
+	.product_container {
+	  position: relative;
+	  /*width: 275px;*/
+	  max-width: 275px;
+	  margin: 4px;
+	}
+
+	.imgPost {
+	  display: block;
+	  /*width: 100%;*/
+	  height: auto;
+	}
+
+	.product_overlay {
+	  position: absolute; 
+	  bottom: 0; 
+	  background: rgb(0, 0, 0);
+	  background: rgba(0, 0, 0, 0.5); /* Black see-through */
+	  color: #f1f1f1; 
+	  width: 100%;
+	  height: 50pt;
+	  transition: .5s ease;
+	  opacity:0;
+	  color: white;
+	  font-size: 20px;
+	  padding: 0px;
+	  text-align: center;
+      cursor: pointer;
+	}
+
+	.product_container:hover .product_overlay {
+	  opacity: 1;
+	}
+
+	/*css for form product*/
+	.form-update-button {
+		-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+		-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+		box-shadow:inset 0px 1px 0px 0px #ffffff;
+		background-color:#f9f9f9;
+		-moz-border-radius:6px;
+		-webkit-border-radius:6px;
+		border-radius:6px;
+		border:1px solid #dcdcdc;
+		display:inline-block;
+		cursor:pointer;
+		color:#666666;
+		font-family:Arial;
+		font-size:15px;
+		font-weight:bold;
+		padding:6px 24px;
+		text-decoration:none;
+	}
+	.form-update-button:hover {
+		background-color:#e9e9e9;
+	}
+	.form-update-button:active {
+		position:relative;
+		top:1px;
+	}
+
+	.form-submit-button {
+		-moz-box-shadow:inset 0px -3px 7px 0px #52514e;
+		-webkit-box-shadow:inset 0px -3px 7px 0px #52514e;
+		box-shadow:inset 0px -3px 7px 0px #52514e;
+		background-color:#52514e;
+		-moz-border-radius:3px;
+		-webkit-border-radius:3px;
+		border-radius:3px;
+		border:1px solid #52514e;
+		display:inline-block;
+		cursor:pointer;
+		color:#ffffff;
+		font-family:Arial;
+		font-size:15px;
+		padding:9px 23px;
+		text-decoration:none;
+		text-shadow:0px 1px 0px #000000;
+	}
+	.form-submit-button:hover {
+		background-color:#52514e;
+	}
+	.form-submit-button:active {
+		position:relative;
+		top:1px;
+	}
+
+
+
+	/*css for brand_create*/
+	#brandPanel{
+		width: 500pt;
+		margin-top: 100pt;
+		border: #cccccc solid 1px;
+	}
+	#brandPanelHead{
+		background: transparent;
+	}
+	/*end off css for brand_create*/
+
+	/*css for brand table list*/
+	#brandTable{
+		/*border: #cccccc solid 1px;*/
+		border-radius: 10px;
+		@media only screen and (min-width: 1920px){
+			.brandRes {width: 200%}
+		}
+	}
+	/*end of css brand table list*/
+
+	/*css for Cateory create*/
+		#categoryBorder{
+			border: #cccccc solid 1px;
+			border-radius:10px;
+			margin-top: 100pt;
+			padding: 10pt;
+		}
+		#categoryHead{
+			/*margin-top: 80pt;*/
+			border: #cccccc solid 1px;
+			border-bottom: none;
+			border-radius: 10px 10px 0px 0px;	
+		}
+		h4{
+			padding: 0pt;
+			margin:0pt;
+			padding-bottom: 0pt;
+		}
+		hr{
+			color: #cccccc;
+		}
+	/*end of css for Cateory create*/
+
+	/*css for product_create*/
+	input[type=number]::-webkit-inner-spin-button, 
+	input[type=number]::-webkit-outer-spin-button { 
+	  -webkit-appearance: none; 
+	  margin: 0; 
+	}
+
+
+	html {
+	  height: 100%;
+	  box-sizing: border-box;
+	}
+
+	*,
+	*:before,
+	*:after {
+	  box-sizing: inherit;
+	}
+
+	body {
+	  position: relative;
+	  margin: 0;
+	  padding-bottom: 6rem;
+	  min-height: 100%;
+	}
+	.footer {
+	  position: absolute;
+	  right: 0;
+	  bottom: 0;
+	  left: 0;
+	  padding: 1rem;
+	  color: white;
+	  background-color: #272727;
+	  text-align: center;
+	}
+
+
+
+	</style>
+</head>
+<body>
+<div class="banner" style="position: fixed; z-index: 100; left: 0; top: 0; background-color: white; width: 100%; padding-top: 12pt">
+	<a href="/"><img src="/static/logo.png" style="margin-left: 100pt; margin-bottom: 5pt"></a>
+
+<div class="pull-right menu-links-div" style=" padding-top: 12pt; position: relative; left: 0; margin-right: 65pt">
+	<a href="/orders" class="menu-links" style="color: #808080; font-size: 17pt; margin-right: 15pt" >Orders</a>
+	<a href="/customers" class="menu-links" style="color: #808080; font-size: 17pt; margin-right: 15pt" >Customers</a>
+	<a href="/brands" class="menu-links" style="color: #808080; font-size: 17pt; margin-right: 15pt">Brands</a>
+	<a href="/categories" class="menu-links" style="color: #808080; font-size: 17pt; margin-right: 15pt" >Categories</a>
+	<a href="/product/create" class="menu-links" style="color: #808080; font-size: 17pt; margin-right: 15pt">Add Product</a>
+	<a href="/" class="menu-links" style="color: #808080; font-size: 17pt; margin-right: 15pt"><span class="glyphicon glyphicon-home"></span></a>
+</div>
+
+
+	{{!-- <a href="/" style="color: #808080; font-size: 17pt; padding-top: 24pt;margin-right: 135pt" class="pull-right"><span class="glyphicon glyphicon-home"></span></a>
+	<a href="/orders" style="color: #808080; font-size: 17pt; padding-top: 24pt;margin-right: 25pt" class="pull-right">Orders</a>
+	<a href="/customers" style="color: #808080; font-size: 17pt; padding-top: 24pt;margin-right: 25pt" class="pull-right">Customers</a>
+	<a href="/brands" style="color: #808080; font-size: 17pt; padding-top: 24pt;margin-right: 25pt" class="pull-right">Brands</a>
+	<a href="/categories" style="color: #808080; font-size: 17pt; padding-top: 24pt;margin-right: 25pt" class="pull-right">Categories</a>
+	<a href="/product/create" style="color: #808080; font-size: 17pt; padding-top: 24pt;margin-right: 25pt" class="pull-right">Add Product</a> --}}
+</div>
+<div style="margin-bottom: 100pt"></div>
+    {{{body}}}
+
+
+
+
+<!-- Footer -->
+{{!-- <footer id="qqq"> --}}
+<div class="footer">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      <a href="facebook.com/aiverkeith" style="color:white"> facebook.com/aiverkeith</a>
+      <a href="facebook.com/vistasweeney" style="color:white"> facebook.com/vistasweeney</a>
+    </div>
+    <!-- Copyright -->
+</div>
+{{!-- </footer> --}}
+
+
+
+
+</body>
+<script type="text/javascript">
+	$(function() {
+    var Accordion = function(el, multiple) {
+		this.el = el || {};
+		this.multiple = multiple || false;
+
+		// Variables privadas
+		var links = this.el.find('.link');
+		// Evento
+		links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+	}
+
+	Accordion.prototype.dropdown = function(e) {
+		var $el = e.data.el;
+			$this = $(this),
+			$next = $this.next();
+
+		$next.slideToggle();
+		$this.parent().toggleClass('open');
+
+		if (!e.data.multiple) {
+			$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+		};
+	}	
+
+	var accordion = new Accordion($('#accordion'), false);
+});
+
+$( document ).ready(function() {
+   	document.getElementByID('qqq').style.position = 'absolute';
+   	document.getElementByID('qqq').style.bottom = '0';
+});
+</script>
+</html>

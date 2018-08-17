@@ -1,0 +1,55 @@
+<div class="container text-center" style="max-width: 100vw">
+	
+<h1>Orders list</h1>
+	<br>
+	<div class="container col-md-12 brandRes" id="brandTable">
+		<table class="table table-hover" id="posts" >
+			<thead>
+				<tr>
+					<th class="text-center" width="12%">
+						<label>Order ID</label>
+					</th>
+					<th class="text-center" width="20%">
+						<label>Customer Name</label>
+					</th>
+					<th class="text-center" width="20%">
+						<label>Address</label>
+					</th>
+					<th class="text-center">
+						<label>Product Name</label>
+					</th>
+					<th class="text-center" width="10%">
+						<label>Price</label>
+					</th>
+					<th class="text-center">
+						<label>Quantity</label>
+					</th>
+					<th class="text-center" width="10%">
+						<label>Total</label>
+					</th>
+					<th class="text-center">
+						<label>Order Message</label>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each orders_data}}
+					<tr>
+						<td>{{this.id}}</td>
+						<td>{{this.first_name}} {{this.last_name}}</td>
+						<td>{{this.street}}, {{this.city_municipality}}, {{this.zipcode}}</td>
+						<td>{{this.name}}</td>
+						<td>Php {{this.price}}</td>
+						<td>{{this.quantity}}</td>
+						<td>Php {{this.total}}</td>
+						<td>{{this.message}}</td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+{{#each orders}}
+	<p>{{this.id}}{{this.last_name}}{{this.first_name}}{{this.street}}{{this.city_municipality}}{{this.zipcode}}{{this.product_name}}{{this.product_price}}</p>
+{{/each}}

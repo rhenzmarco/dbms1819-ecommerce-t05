@@ -1,0 +1,50 @@
+<div class="container text-center" >
+	
+<h1>Customers list</h1>
+	<br>
+	<div class="container col-xs-12 brandRes" id="brandTable">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th class="text-center" width="24%">
+						<label>Name</label>
+					</th>
+					<th class="text-center"  width="18%">
+						<label>Email</label>
+					</th>
+					<th class="text-center">
+						<label>Address</label>
+					</th>
+					<th class="text-center">
+						<label>Detail</label>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each customers}}
+					<tr>
+						<td>
+							{{this.first_name}} {{this.last_name}}
+						</td>
+						<td>
+							{{this.email}}
+						</td>
+						<td>
+							{{this.street}}, {{this.city_municipality}}, {{this.zipcode}}
+						</td>
+						<td>
+							<form action="/customers" method="POST">
+								<input type="hidden" name="customer_id" value="{{this.id}}">
+								<input type="submit" name="" value="Select" class="btn btn-sm form-update-button">
+							</form>
+						</td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+</script>
