@@ -1,13 +1,20 @@
+// const express = require('express');
+// const path = require('path');
+// const exphbs = require('express-handlebars');
+// const bodyParser = require('body-parser');
+// const nodemailer = require('nodemailer');
+// const config = require('./config.js');
+// const { Client } = require('pg');
+// console.log('config db', config.db);
+// const client = new Client(config.db);
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 const express = require('express');
 const path = require('path');
+const { Client } = require('pg');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
-// const config = require('./config.js');
-const { Client } = require('pg');
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-// console.log('config db', config.db);
-// const client = new Client(config.db);
+const PORT = process.env.PORT || 3000
 
 const client = new Client({
   database: 'dd3c9ddqhmqsf1',
@@ -120,18 +127,18 @@ app.post('/products/:id/send', function (req, res) {
       client.query("INSERT INTO orders (product_id,customer_id,quantity) VALUES ('" + req.body.products_id + "', '" + id + "', '" + req.body.quantity + "')")
 
         .then((results) => {
-          var maillist = ['basketball.shoes2018@gmail.com', req.body.email];
+          var maillist = ['dbms.1819team05@gmail.com', req.body.email];
           var transporter = nodemailer.createTransport({
             host: 'smtp.gmail.com',
             port: 465,
             secure: true,
             auth: {
-              user: 'basketball.shoes2018@gmail.com',
-              pass: 'gilasbasketball'
+              user: 'dbms.1819team05@gmail.com',
+              pass: 'a1234567!'
             }
           });
           const mailOptions = {
-            from: '"basketball2018" <basketball.shoes2018@gmail.com>',
+            from: '"basketball2018" <dbms.1819team05@gmail.com>',
             to: maillist,
             subject: 'Order Request Information',
             html:
@@ -324,3 +331,4 @@ app.listen(app.get('port'), function () {
   console.log('Server started at port 3000');
 });
 
+app.listen(PORT);
