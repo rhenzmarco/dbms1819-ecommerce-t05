@@ -125,8 +125,8 @@ app.post('/products/:id/send', function (req, res) {
             port: 465,
             secure: true,
             auth: {
-              user: 'basketball.shoes2018@gmail.com',
-              pass: 'gilasbasketball'
+              user: 'rhenz.marco@yahoo.com',
+              pass: 'marcoazel28'
             }
           });
           const mailOptions = {
