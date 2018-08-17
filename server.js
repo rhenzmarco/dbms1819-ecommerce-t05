@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 // const config = require('./config.js');
 const { Client } = require('pg');
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 // console.log('config db', config.db);
 // const client = new Client(config.db);
 
@@ -125,8 +126,8 @@ app.post('/products/:id/send', function (req, res) {
             port: 465,
             secure: true,
             auth: {
-              user: 'rhenz.marco@yahoo.com',
-              pass: 'marcoazel28'
+              user: 'basketball.shoes2018@gmail.com',
+              pass: 'gilasbasketball'
             }
           });
           const mailOptions = {
