@@ -14,7 +14,7 @@ const { Client } = require('pg');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
-const PORT = process.env.PORT || 3000
+// const PORT = process.env.PORT || 3000
 
 const client = new Client({
   database: 'dd3c9ddqhmqsf1',
@@ -331,4 +331,4 @@ app.listen(app.get('port'), function () {
   console.log('Server started at port 3000');
 });
 
-app.listen(PORT);
+// app.listen(PORT);
