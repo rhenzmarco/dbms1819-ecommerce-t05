@@ -47,6 +47,7 @@ app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
   res.render('home', {
+    layout: 'admin',
   });
 });
 
@@ -54,11 +55,13 @@ app.get('/', function (req, res) {
 
 app.get('/brand/create', function (req, res) {
   res.render('create-brand', {
+    layout:'admin',
   });
 });
 
 app.get('/category/create', (req, res) => {
   res.render('create-category', {
+    layout: 'admin',
   });
 });
 
@@ -83,6 +86,7 @@ app.get('/product/create', function (req, res) {
       console.log(category);
       console.log(both);
       res.render('create-product', {
+        layout:'admin',
         rows: both
       });
     })
@@ -93,7 +97,25 @@ app.get('/product/create', function (req, res) {
 });
 
 // Post method requests
+app.get('/member/Francis', function(req, res){
+  res.render('member', {
+    name: 'Francis Manalastas',
+    email: 'francis.manalastas@gmail.com',
+    phone: '09228952440',
+    imageurl: 'https://scontent.fmnl4-6.fna.fbcdn.net/v/t1.0-9/31290267_1870298586321829_7153447419387052032_n.jpg?_nc_cat=0&_nc_eui2=AeH3tzbqJyfKqvUdNBZm4W2JXNNllK9G5_UjlQtTgCIGo3e__1OhGlm1kcGQHx5LnuxRcUxXlNG-Ivmx7dP-u4LD-GmONcKe85fkwdgVMpU8Ow&oh=64d70d087a8e20718bde7686efb9ad5e&oe=5C12218D',
+    hobbies: ['sketching', 'reading','listening to music']
+  });
+});
 
+app.get('/member/Rhenz', function(req, res){
+  res.render('member', {
+    name: 'Rhenz Marco Mayor',
+    email: 'rhenz.mayor@gmail.com',
+    phone: '09228951997',
+    imageurl:'https://scontent.fmnl4-6.fna.fbcdn.net/v/t1.0-9/35238068_2133538313341203_8797277153281441792_n.jpg?_nc_cat=0&_nc_eui2=AeGFxPEavGyE94osbtK_Q2WUbxY0ktZWELxNur_0EgxhADVwf3AOrrlCjIXPTLWPjZ0vuIYEnhYbh4Idw5uQxu5GSryL6Btd0cEoKL1IhPxvoQ&oh=ade0b4d2905fc2e83eb2066818bef663&oe=5BD71678',
+    hobbies: ['studying', 'programming','playing']
+  });
+});
 app.post('/brands', function (req, res) {
   console.log(req.body);
   client.query("INSERT INTO brands (brand_name,brand_description) VALUES ('" + req.body.brand_name + "','" + req.body.brand_description + "')");
@@ -201,6 +223,7 @@ app.get('/products', (req, res) => {
       list.push(data.rows[i]);
     }
     res.render('products', {
+      layout: 'admin',
       data: list,
       title: 'Most Popular Shoes'
     });
@@ -211,7 +234,7 @@ app.get('/brands', function (req, res) {
   client.query('SELECT * FROM brands')
     .then((result) => {
       console.log('results?', result);
-      res.render('brands', result);
+      res.render('brands', {result,layout:'admin'});
     })
     .catch((err) => {
       console.log('error', err);
@@ -223,7 +246,7 @@ app.get('/categories', function (req, res) {
   client.query('SELECT * FROM products_category')
     .then((result) => {
       console.log('results?', result);
-      res.render('categories', result);
+      res.render('categories',{ result, layout:'admin'});
     })
     .catch((err) => {
       console.log('error', err);
@@ -235,7 +258,7 @@ app.get('/customers', function (req, res) {
   client.query('SELECT * FROM customers ORDER BY id DESC')
     .then((result) => {
       console.log('results?', result);
-      res.render('customers', result);
+      res.render('customers',{ result, layout:'admin'});
     })
     .catch((err) => {
       console.log('error', err);
@@ -247,7 +270,7 @@ app.get('/customers/:id', (req, res) => {
   client.query('SELECT customers.first_name AS first_name, customers.middle_name AS middle_name, customers.last_name AS last_name,customers.email AS email,customers.street AS street,customers.city AS city,customers.state AS state,customers.zipcode AS zipcode,products.name AS name,orders.quantity AS quantity,orders.purchase_date AS purchase_date FROM orders INNER JOIN customers ON customers.id=orders.customer_id INNER JOIN products ON products.id=orders.product_id WHERE customers.id = ' + req.params.id + 'ORDER BY purchase_date DESC;')
     .then((result) => {
       console.log('results?', result);
-      res.render('customer-details', result);
+      res.render('customer-details',{ result, layout:'admin'});
     })
     .catch((err) => {
       console.log('error', err);
@@ -258,7 +281,7 @@ app.get('/orders', function (req, res) {
   client.query('SELECT customers.first_name AS first_name, customers.middle_name AS middle_name, customers.last_name AS last_name, customers.email AS email, products.name AS products_name, orders.purchase_date AS purchase_date, orders.quantity AS quantity FROM orders INNER JOIN products ON orders.product_id=products.id INNER JOIN customers ON orders.customer_id=customers.id ORDER BY purchase_date DESC;')
     .then((result) => {
       console.log('results?', result);
-      res.render('orders', result);
+      res.render('orders',{ result, layout:'admin'});
     })
     .catch((err) => {
       console.log('error', err);
@@ -294,6 +317,7 @@ app.get('/product/update/:id', function (req, res) {
   client.query('SELECT products.id AS products_id, products.image AS products_image, products.name AS products_name, products.description AS products_description, products.tagline AS products_tagline, products.price AS products_price, products.warranty AS products_warranty, brands.brand_name AS brand_name, brands.brand_description AS brand_description, products_category.product_category_name AS category_name FROM products INNER JOIN brands ON products.brand_id=brands.id INNER JOIN products_category ON products.category_id=products_category.id WHERE products.id = ' + req.params.id + '; ')
     .then((result) => {
       res.render('update-products', {
+        layout: 'admin',
         rows: result.rows[0],
         brand: both
       });
@@ -309,6 +333,7 @@ app.get('/products/:id', function (req, res) {
     .then((results) => {
       console.log('results?', results);
       res.render('product-details', {
+        layout: 'admin',
         name: results.rows[0].products_name,
         description: results.rows[0].products_description,
         tagline: results.rows[0].products_tagline,
