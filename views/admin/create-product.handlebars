@@ -1,3 +1,21 @@
+<style>
+
+.btn-design {
+
+	background-color: white;
+	border-color: #c61aff;
+	color: #c61aff;
+
+}
+
+.btn-design:hover{
+	
+	background-color: #c61aff;
+	border-color: white;
+	color: white;
+}
+
+</style>
 
   <style type="text/css">
     @import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
@@ -60,7 +78,7 @@ body{
 }
 #main-content{
   border: 3px solid darkgray ;
-  background-color: white;
+  background-color: darkgray;
   height: 80%;
   width: 85%;
   margin:10px;
@@ -325,36 +343,69 @@ iframe{
 
     <div class="linee" style="height: 1em;"></div>
     <div class="sqr">
-    <nav>
+     <nav>
       <div class="cont" id="tabs">
         <ul class="liss" style="padding: 0px;">
           <li><a href="/admin/products" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-left: 10pt; margin-right: 15pt" >Products</a></li>
           <li> <a href="/admin/orders" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt" >Orders</a></li>
         <li><a href="/admin/customers" class="menu-links" style="color: #FFFFFF; font-size:14pt; margin-right: 15pt" >Customers</a></li>
-         <li><a href="/brands" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt">Brands</a></li>
-        <li><a href="/categories" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt" >Categories</a></li>
-        <li><a href="/product/create" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt">Add Product</a></li>
+         <li><a href="/admin/brands" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt">Brands</a></li>
+         <li><a href="/admin/brand/create" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt">Add Brand</a></li>
+         <li><a href="/admin/categories" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt" >Categories</a></li>
+         <li><a href="/admin/category/create" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt" >Add Category</a></li>
+         <li><a href="/admin/product/create" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt">Add Product</a></li>
         </ul>
       </div>
       <div class="cont tablle" id="main-content">
-<div class="container text-center">
-	
-<h1>Categories</h1>
-	
-					
-<div class="container" style="margin-left: 170px; ">
-	<div class="row justify-content-md-center">
-		
-		<div class="col-sm-8">
-			<a href="#" class="list-group-item list-group-item-action active" style="background-color: rgb(120, 120, 120);"><i 	class="fa fa-list-alt" style="font-size:40px"></i>&nbsp;Category List</a>
-			{{#each rows}}
-			<a href="#" class="list-group-item list-group-item-action ">{{this.product_category_name}}</a>
-			{{/each}}
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="modal-body">
+				<form method="POST" action="/insert_products">
+					<div class="form-group">
+						<label for="name">Name:</label><br>
+						<input type="text" name="name" class="form-control" value="" required="" placeholder="Enter Product Name">
+					</div>
+					<div class="form-group">
+						<label for="description">Description:</label><br>
+						<input type="text" name="description" class="form-control" value="" required="" placeholder="Enter Product Description">
+					</div>
+					<div class="form-group">
+						<label for="tagline">Tagline:</label><br>
+						<input type="text" name="tagline" class="form-control" value="" required="" placeholder="Enter Product Tagline">
+					</div>
+					<div class="form-group">
+						<label for="price">Price:</label><br>
+						<input type="number" name="price" class="form-control" value="" required="" placeholder="Enter Product Price">
+					</div>
+					<div class="form-group">
+						<label for="warranty">Warranty (In years):</label><br>
+						<input type="number" name="warranty" class="form-control" value="" required="" placeholder="Enter Warranty (in years)">
+					</div>
+					<div class="form-group">
+						<label for="brand_id">Brand:</label><br>
+						<select class="form-control" name="brand_id" required="">
+							{{#each rows.[0]}}
+								<option value="{{this.id}}">{{this.brand_name}}</option>
+							{{/each}}
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="category_id">Category:</label><br>
+						<select class="form-control" name="category_id" required="">
+							{{#each rows.[1]}}
+								<option value="{{this.id}}">{{this.product_category_name}}</option>
+							{{/each}}
+						</select><br>
+					<div class="form-group">
+						<label for="image">Image URL:</label><br>
+						<input type="text" name="image" class="form-control" value="" required="" placeholder="Enter Product Image URL"><br><hr>
+					</div>
+					<div class="form-group">
+						<input type="submit" name="submit" value="Submit" class="btn btn-secondary btn-lg btn-block"style="background-color: #262626;color:lightgray; width: 200pt">
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
-</div>
-
-</div>
-<div><a role="button" class="btn btn-secondary btn-lg btn-block" style="background-color: #262626;color:lightgray; margin-left: 40%; margin-top: 50px; width: 200pt"href="/admin/category/create">Create Category</button></a>
-</div>
 </div>
