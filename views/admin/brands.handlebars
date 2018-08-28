@@ -1,17 +1,4 @@
-  
-    
-<!DOCTYPE html>
-<html>
-<head>
-  <title>PROJECT TANYAG-ADMIN</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <link rel="icon" href="/icon1.png">
-  <script src="/wp-includes/js/addInput.js" language="Javascript" type="text/javascript"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
   <style type="text/css">
     @import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
         @import url(https://fonts.googleapis.com/css?family=Open+Sans);
@@ -31,11 +18,6 @@ body{
   height: 8%;
   margin-left: 25px;
 }
-#header h1{
-   margin-left: 100px;
-}
-
-
 #tabs{
   border:1px solid gray;
   float: left;
@@ -78,9 +60,9 @@ body{
 }
 #main-content{
   border: 3px solid darkgray ;
-  background-color: white;
+  background-color: darkgray;
   height: 80%;
-  width: 75%;
+  width: 85%;
   margin:10px;
 }
 ul li:hover{
@@ -340,76 +322,52 @@ iframe{
   </style>
 </head>
 <body>
-<div class="fluid" id="header">
-      <img src="/icon.png">
-      <img src="/icon1.png"> <h1>BARANGAY TANYAG ADMIN<h1>
 
-    </div>
     <div class="linee" style="height: 1em;"></div>
     <div class="sqr">
-    <nav>
+     <nav>
       <div class="cont" id="tabs">
         <ul class="liss" style="padding: 0px;">
-          <li><a href="/products" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-left: 10pt; margin-right: 15pt" >INFORMATION </a></li>
-          <li> <a href="/orders" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt" >ANNOUNCMENT</a></li>
-        <li><a href="/customers" class="menu-links" style="color: #FFFFFF; font-size:14pt; margin-right: 15pt" >PAUPAHAN LIST</a></li>
-         <li><a href="/brands" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt">INHABITANTS</a></li>
+          <li><a href="/admin/products" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-left: 10pt; margin-right: 15pt" >Products</a></li>
+          <li> <a href="/admin/orders" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt" >Orders</a></li>
+        <li><a href="/admin/customers" class="menu-links" style="color: #FFFFFF; font-size:14pt; margin-right: 15pt" >Customers</a></li>
+         <li><a href="/admin/brands" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt">Brands</a></li>
+         <li><a href="/admin/brand/create" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt">Add Brand</a></li>
+         <li><a href="/admin/categories" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt" >Categories</a></li>
+         <li><a href="/admin/category/create" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt" >Add Category</a></li>
+         <li><a href="/admin/product/create" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt">Add Product</a></li>
         </ul>
       </div>
       <div class="cont tablle" id="main-content">
-            {{{body}}}
-      </div>
-    </nav>
-      
-    </div>
 
-
-
-
-
-<!-- Footer -->
-{{!-- <footer id="qqq"> --}}
-<div class="footer">
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">Developed by Barangay Developers 
-    </div>
-    </div>
-
-
-
-
-</body>
-<script type="text/javascript">
-  $(function() {
-    var Accordion = function(el, multiple) {
-    this.el = el || {};
-    this.multiple = multiple || false;
-
-    // Variables privadas
-    var links = this.el.find('.link');
-    // Evento
-    links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
-  }
-
-  Accordion.prototype.dropdown = function(e) {
-    var $el = e.data.el;
-      $this = $(this),
-      $next = $this.next();
-
-    $next.slideToggle();
-    $this.parent().toggleClass('open');
-
-    if (!e.data.multiple) {
-      $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
-    };
-  } 
-
-  var accordion = new Accordion($('#accordion'), false);
-});
-
-$( document ).ready(function() {
-    document.getElementByID('qqq').style.position = 'absolute';
-    document.getElementByID('qqq').style.bottom = '0';
-});
-</script>
-</html>
+<h1>Brands</h1>
+	<br>
+	<div class="container col-xs-8 brandRes" id="brandTable" style= "margin-left:240px">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th class="text-center" width="20%">
+						<label>Brand Name</label>
+					</th>
+					<th class="text-center">
+						<label>Description</label>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each rows}}
+					<tr>
+						<td>
+							<label>{{this.brand_name}}</label>
+						</td>
+						<td>
+							{{this.brand_description}}
+						</td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</div>
+<div><a role="button" class="btn btn-secondary btn-lg btn-block" style="background-color: #262626;color:lightgray; margin-left: 40%; margin-top: 50px; width: 200pt"href="/admin/brand/create">Create Brand</button></a>
+</div>

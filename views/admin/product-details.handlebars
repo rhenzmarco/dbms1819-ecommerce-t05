@@ -1,0 +1,493 @@
+
+  <style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+  
+}
+.fluid{
+  background: #778899;
+  padding: 5px;
+
+}
+#header{
+  padding: 10px;
+}
+#header img{
+  height: 8%;
+  margin-left: 25px;
+}
+#tabs{
+  border:1px solid gray;
+  float: left;
+  height: 83%;
+  background-color: #808080;
+  color: black;
+}
+#tabs img {
+  height: 5%;
+  margin-bottom: -7px; 
+}
+#tabs ul li{
+  list-style: none;
+  
+}
+.liss{
+  padding: 0px;
+}
+.liss li{
+  border-bottom: 2px solid darkgray;
+  font-size: 20px;
+  padding: 10px;
+
+}
+.linee{
+  width: 100%;
+  text-align: center;
+  background: #808080;
+  color: white;
+}
+.spc{
+  border:3px solid darkgray;
+
+}
+.cont{
+  border: 1px solid lightgray;
+  display: inline-block;
+  color: black;
+    
+}
+#main-content{
+  border: 3px solid darkgray ;
+  background-color: darkgray;
+  height: 80%;
+  width: 85%;
+  margin:10px;
+}
+ul li:hover{
+  background-color: #D3D3D3;
+  cursor: pointer;
+  
+
+}
+a:active{
+  background-color: #D3d3d3;
+}
+a{
+  text-decoration: none;
+  color: white;
+}
+iframe{
+  height: 95%;
+  width: 100%;
+}
+.dii{
+  
+  display: inline-block;
+}
+
+.usrname{
+  float: right;
+  margin: 15px;
+}
+#titleev{
+  width: 50%;
+  font-size: 1em;
+}
+.dets{
+  width: 50%;
+  font-size: 12px;
+
+  align-self: right;
+  border:2px solid black;
+}
+.addmin{
+  border: 2px solid skyblue;
+  margin: 50px;
+
+}
+.areg input{
+
+  margin: 5px;
+}
+  
+    body {
+      background: #D3D3D3;
+      font-family: 'Open Sans', Arial, Helvetica, Sans-serif, Verdana, Tahoma;
+    }
+
+    #productImg {
+    border-radius: 5px;
+    /*cursor: pointer;*/
+    transition: 0.3s;
+    }
+
+    #productImg:hover {
+        opacity: 0.8;
+    }
+
+  .product_row_css {
+      display: -ms-flexbox; /* IE 10 */
+      display: flex;
+      -ms-flex-wrap: wrap; /* IE 10 */
+      flex-wrap: wrap;
+      padding: 0 4px;
+  }
+
+  /* Create four equal columns that sits next to each other */
+  .product_column_css {
+      -ms-flex: 25%; /* IE 10 */
+      flex: 25%;
+      padding: 0 0px;
+  }
+
+  .product_column_css img {
+      margin-top: 5px;
+      vertical-align: middle;
+  }
+
+
+  .product_container {
+    position: relative;
+    /*width: 275px;*/
+    max-width: 275px;
+    margin: 4px;
+  }
+
+  .imgPost {
+    display: block;
+    /*width: 100%;*/
+    height: auto;
+  }
+
+  .product_overlay {
+    position: absolute; 
+    bottom: 0; 
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5); /* Black see-through */
+    color: #f1f1f1; 
+    width: 100%;
+    height: 50pt;
+    transition: .5s ease;
+    opacity:0;
+    color: white;
+    font-size: 20px;
+    padding: 0px;
+    text-align: center;
+      cursor: pointer;
+  }
+
+  .product_container:hover .product_overlay {
+    opacity: 1;
+  }
+
+  /*css for form product*/
+  .form-update-button {
+    -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+    background-color:#f9f9f9;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    border:1px solid #dcdcdc;
+    display:inline-block;
+    cursor:pointer;
+    color:#666666;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:6px 24px;
+    text-decoration:none;
+  }
+  .form-update-button:hover {
+    background-color:#e9e9e9;
+  }
+  .form-update-button:active {
+    position:relative;
+    top:1px;
+  }
+
+  .form-submit-button {
+    -moz-box-shadow:inset 0px -3px 7px 0px #52514e;
+    -webkit-box-shadow:inset 0px -3px 7px 0px #52514e;
+    box-shadow:inset 0px -3px 7px 0px #52514e;
+    background-color:#52514e;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+    border:1px solid #52514e;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:15px;
+    padding:9px 23px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #000000;
+  }
+  .form-submit-button:hover {
+    background-color:#52514e;
+  }
+  .form-submit-button:active {
+    position:relative;
+    top:1px;
+  }
+
+
+
+  /*css for brand_create*/
+  #brandPanel{
+    width: 500pt;
+    margin-top: 100pt;
+    border: #cccccc solid 1px;
+  }
+  #brandPanelHead{
+    background: transparent;
+  }
+  /*end off css for brand_create*/
+
+  /*css for brand table list*/
+  #brandTable{
+    /*border: #cccccc solid 1px;*/
+    border-radius: 10px;
+    @media only screen and (min-width: 1920px){
+      .brandRes {width: 200%}
+    }
+  }
+  /*end of css brand table list*/
+
+  /*css for Cateory create*/
+    #categoryBorder{
+      border: #cccccc solid 1px;
+      border-radius:10px;
+      margin-top: 100pt;
+      padding: 10pt;
+    }
+    #categoryHead{
+      /*margin-top: 80pt;*/
+      border: #cccccc solid 1px;
+      border-bottom: none;
+      border-radius: 10px 10px 0px 0px; 
+    }
+    h4{
+      padding: 0pt;
+      margin:0pt;
+      padding-bottom: 0pt;
+    }
+    hr{
+      color: #cccccc;
+    }
+  /*end of css for Cateory create*/
+
+  /*css for product_create*/
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
+
+
+  html {
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+  body {
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+  }
+  .footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    color: white;
+    background-color: #272727;
+    text-align: center;
+  }
+
+
+
+  </style>
+</head>
+<body>
+
+    <div class="linee" style="height: 1em;"></div>
+    <div class="sqr">
+     <nav>
+      <div class="cont" id="tabs">
+        <ul class="liss" style="padding: 0px;">
+          <li><a href="/admin/products" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-left: 10pt; margin-right: 15pt" >Products</a></li>
+          <li> <a href="/admin/orders" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt" >Orders</a></li>
+        <li><a href="/admin/customers" class="menu-links" style="color: #FFFFFF; font-size:14pt; margin-right: 15pt" >Customers</a></li>
+         <li><a href="/admin/brands" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt">Brands</a></li>
+         <li><a href="/admin/brand/create" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt">Add Brand</a></li>
+         <li><a href="/admin/categories" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt" >Categories</a></li>
+         <li><a href="/admin/category/create" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt" >Add Category</a></li>
+         <li><a href="/admin/product/create" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt">Add Product</a></li>
+        </ul>
+      </div>
+      <div class="cont tablle" id="main-content">
+		<div class="col-sm-6" style="position:absolute; padding-bottom: ">
+			<div class="col-sm-4" style=" padding: 100pt">
+				<img src="{{image}}">
+			</div>
+		</div>
+		<div class="col-sm-6" style="margin-left: 700px">
+			<div style="padding-left: 40pt; padding-top: 50pt">
+				<br>
+				<br>
+				<br>
+				<br>
+				<h1>{{tagline}}</h1>
+				<h1><strong>{{name}}</h1></strong>
+				<label style="margin-bottom: 20pt; font-size: 15pt">Php {{price}} | {{category}}</label>
+				<p align="justify">{{{description}}}</p>
+				<p align="justify">Warranty: {{warranty}} year/s</p>
+				<button type="button" style="float:right; margin-right:20px;" class="btn btn-md btn-design" data-toggle="modal" data-target="#orderModal">Order Product</button>
+					<a href="/admin/product/update/{{this.id}}"><button type="button" style="float:right; margin-right:20px;" class="btn btn-md btn-design">Update Product</button></a>&ensp;&ensp;
+			</div>
+		</div>
+		<div class="container">
+			<p></p>
+		</div>
+	</div>
+</div>
+{{!-- <div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 mb-0 mx-auto">
+			<div class="card center">
+				<img class="card-img-top" src="{{image}}" alt="{{name}}">
+				<div class="card-body">
+					<h4 class="card-title">{{name}}</h4>
+					<h5 class="card-title">{{brandname}} Shoes</h5>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 mb-0 mx-auto">
+			<div class="jumbotron jumbotron-design">
+				<div class="modal-body">
+					<h5>{{name}} - {{brandname}} (P{{price}}.00)</h5>
+					<h6><i>{{category}}</i></h6>
+					<hr>
+					<ul>
+						<li style="text-decoration:none">Name: {{name}}</li>
+						<li style="text-decoration:none">Description: {{description}}</li>
+						<li style="text-decoration:none">Brand Name: {{brandname}}</li>
+						<li style="text-decoration:none">Brand Description: {{branddescription}}</li>
+						<li style="text-decoration:none">Tagline: {{tagline}}</li>
+						<li style="text-decoration:none">Warranty (in years): {{warranty}}</li>
+						<li style="text-decoration:none">Category: {{category}}</li>
+					</ul>
+				</div>
+				<hr>
+				<div class="modal-footer">
+					<button type="button" style="float:right; margin-right:20px;" class="btn btn-md btn-design" data-toggle="modal" data-target="#orderModal">Order Product</button>
+					<a href="/product/update/{{this.id}}"><button type="button" style="float:right; margin-right:20px;" class="btn btn-md btn-design">Update Product</button></a>&ensp;&ensp;
+				</div>
+			</div>
+		</div>
+	</div>
+</div> --}}
+
+<!--Order Modal-->
+
+<div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+
+		<div class="modal-content">
+			<div class="modal-header header-design">
+				<h4 class="modal-title">ORDER REQUEST FORM <br> {{name}}</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;
+				</button>
+			</div>
+
+			<div class="modal-body body-design">
+				{{!-- {{#each data}} --}}
+				<form method="POST" action="{{this.id}}/send">
+					<div class="controls">
+       			<input type="hidden" class="form-control" name="products_name" value="{{name}}" />	
+						<div class="form-group">
+							<label class="control-label lbl-text" for="products_id">Product ID:</label>
+							<div>
+								<input id="products_id" name="products_id" type="number" value="{{this.id}}" class="form-control" required="" readonly="">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label lbl-text" for="quantity">Quantity</label>
+							<div>
+								<input id="quantity" name="quantity" type="number" placeholder="Enter Quantity" class="form-control" required="">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label lbl-text" for="email">Email</label>
+							<div>
+								<input id="email" name="email" type="email" placeholder="Enter Email" class="form-control" required="">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label lbl-text" for="first_name">First Name</label>
+							<div>
+								<input id="first_name" name="first_name" type="text" placeholder="Enter First Name" class="form-control" required="">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label lbl-text" for="middle_name">Middle Name</label>
+							<div>
+								<input id="middle_name" name="middle_name" type="text" placeholder="Enter Middle Name" class="form-control" required="">
+							</div>
+						</div>						
+						<div class="form-group">
+							<label class="control-label lbl-text" for="last_name">Last Name</label>
+							<div>
+								<input id="last_name" name="last_name" type="text" value="" class="form-control" placeholder="Enter Last Name" required="">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label lbl-text" for="state">State</label>
+							<div>
+								<input id="state" name="state" type="text" placeholder="Enter State" class="form-control" required="">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label lbl-text" for="city">City</label>
+							<div>
+								<input id="city" name="city" type="text" placeholder="Enter City" class="form-control" required="">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label lbl-text" for="street">Street</label>
+							<div>
+								<input id="street" name="street" type="text" placeholder="Enter Street" class="form-control" required="">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label lbl-text" for="zipcode">Zipcode</label>
+							<div>
+								<input id="zipcode" name="zipcode" type="text" placeholder="Enter Zipcode" class="form-control" required="">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="text-center">
+								<input style="float:left" type="submit" class="btn btn-md btn-design" value="Order Product">
+          			<button style="float:right" type="button" class="btn btn-md btn-design" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</form>
+				{{!-- {{/each}} --}}
+			</div>
+		</div>
+	</div>
+</div>

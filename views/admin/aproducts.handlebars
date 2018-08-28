@@ -1,4 +1,3 @@
-
   <style type="text/css">
     @import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
         @import url(https://fonts.googleapis.com/css?family=Open+Sans);
@@ -60,7 +59,7 @@ body{
 }
 #main-content{
   border: 3px solid darkgray ;
-  background-color: white;
+  background-color: darkgray;
   height: 80%;
   width: 85%;
   margin:10px;
@@ -325,36 +324,44 @@ iframe{
 
     <div class="linee" style="height: 1em;"></div>
     <div class="sqr">
-    <nav>
+     <nav>
       <div class="cont" id="tabs">
         <ul class="liss" style="padding: 0px;">
           <li><a href="/admin/products" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-left: 10pt; margin-right: 15pt" >Products</a></li>
           <li> <a href="/admin/orders" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt" >Orders</a></li>
         <li><a href="/admin/customers" class="menu-links" style="color: #FFFFFF; font-size:14pt; margin-right: 15pt" >Customers</a></li>
-         <li><a href="/brands" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt">Brands</a></li>
-        <li><a href="/categories" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt" >Categories</a></li>
-        <li><a href="/product/create" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt">Add Product</a></li>
+         <li><a href="/admin/brands" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt">Brands</a></li>
+         <li><a href="/admin/brand/create" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt">Add Brand</a></li>
+         <li><a href="/admin/categories" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt" >Categories</a></li>
+         <li><a href="/admin/category/create" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt" >Add Category</a></li>
+         <li><a href="/admin/product/create" class="menu-links" style="color: #FFFFFF; font-size: 14pt; margin-right: 15pt">Add Product</a></li>
         </ul>
       </div>
-      <div class="cont tablle" id="main-content">
-<div class="container text-center">
-	
-<h1>Categories</h1>
-	
-					
-<div class="container" style="margin-left: 170px; ">
-	<div class="row justify-content-md-center">
-		
-		<div class="col-sm-8">
-			<a href="#" class="list-group-item list-group-item-action active" style="background-color: rgb(120, 120, 120);"><i 	class="fa fa-list-alt" style="font-size:40px"></i>&nbsp;Category List</a>
-			{{#each rows}}
-			<a href="#" class="list-group-item list-group-item-action ">{{this.product_category_name}}</a>
-			{{/each}}
-		</div>
-	</div>
-</div>
+			<div class="cont tablle" id="main-content">
+	<div class="product_row_css">
+		{{#each data}}
+			<div class="product_column_css product_container parent_el">
+				{{!-- <div class="hidden ">{{this.name}}</div>
+				<div class="hidden ">{{this.price}}</div>
+				<div class="hidden ">{{this.primary_picture}}</div> --}}
+				<a href="/admin/products/{{this.id}}">
+				<img id="productImg" value="asd" class="imgPost" src="{{this.image}}" style="max-width: 275px">
+				<div class="product_overlay">
+					<form >
+						<input type="hidden" name="product_id" value="{{this.id}}">
+						<input type="hidden" name="product_type" value="{{this.type}}">
+						<input type="hidden" name="product_brand" value="{{this.brand}}">
+						<input type="hidden" name="product_name" value="{{this.name}}">
+						<input type="hidden" name="product_price" value="{{this.price}}">
+						<input type="hidden" name="product_primary_picture" value="{{this.primary_picture}}">
+						<input type="hidden" name="product_description" value="{{this.description}}">
+						{{!-- <input type="submit" name="" value="{{this.name}} {{this.price}}"  style="background-color:transparent; width: 100%; margin: 0px; height: 100%; border: 0px solid;text-align: center; padding: 15pt"> --}}
+						<button type="submit" name="" style="background-color:transparent; width: 100%; margin: 0px; height: 100%; border: 0px solid;text-align: center; padding-top: 5pt">{{this.name}}</br>Php {{this.price}}</button>
+					</form>
+				</div>
+			</div>
+		</a>
 
-</div>
-<div><a role="button" class="btn btn-secondary btn-lg btn-block" style="background-color: #262626;color:lightgray; margin-left: 40%; margin-top: 50px; width: 200pt"href="/admin/category/create">Create Category</button></a>
-</div>
+		{{/each}}
+	</div>
 </div>
