@@ -6,11 +6,11 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const moment = require('moment');
-const Product = require('/models/product');
-const Brand = require('./models/brand');
-const Customer = require('/models/customer');
-const Order = require('/models/order');
-const Category = require('/models/category')
+// const Product = require('./models/product');
+// const Brand = require('./models/brand');
+// const Customer = require('./models/customer');
+// const Order = require('./models/order');
+// const Category = require('./models/category')
 
 // const PORT = process.env.PORT || 3000
 
@@ -101,7 +101,7 @@ app.get('/admin/customers', function (req, res) {
       res.send('Error!');
     });
 });
-app.get('admin/customers/:id', (req, res) => {
+app.get('/admin/customers/:id', (req, res) => {
   client.query('SELECT customers.first_name AS first_name, customers.middle_name AS middle_name, customers.last_name AS last_name,customers.email AS email,customers.street AS street,customers.city AS city,customers.state AS state,customers.zipcode AS zipcode,products.name AS name,orders.quantity AS quantity,orders.purchase_date AS purchase_date FROM orders INNER JOIN customers ON customers.id=orders.customer_id INNER JOIN products ON products.id=orders.product_id WHERE customers.id = ' + req.params.id + 'ORDER BY purchase_date DESC;')
     .then((result) => {
       console.log('results?', result);
