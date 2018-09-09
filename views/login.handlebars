@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+	text-align: center;
+	display: block;
+	background: #d3d3d3;
+}
+.spc{
+	margin: 10px 5px
+}
+.abox{
+	
+	margin: 80px auto;
+		width: 35%;	
+	border: 1px solid gray;
+	margin: 0 auto;
+	background: white;
+	border-radius: 10px;
+	padding: 15px ;
+	font-family: arial;
+}
+
+/*img{
+	width: 30%;
+}*/
+input[type=text], input[type=password], select {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 5px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    
+    box-sizing: border-box;
+    background-color: #DCDCDC;
+    text-align: center;
+    }
+input[type=submit]{
+	width: 80%;
+	padding: 12px 20px;
+	background-color:black;
+	color: white;
+	border-radius: 10px;
+
+}
+input[type=submit]:hover{
+	background-color: #104BC1;
+}
+form label{
+	color: #082B71;
+}
+
+</style>	<title>Admin Login</title>
+	<link rel="stylesheet" type="text/css" href="Admin_login.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="abox" style="">
+		<form action="login.php" method="post">
+			<img class="spc" src="/icon.png"><br>
+			<label><b>ADMIN LOGIN</b></label><br>
+			<input class="spc"  type="text" id="ausername" name="ausername" placeholder="Username" required><br>
+			<input class="spc" type="password" id="apassword" name="apassword" placeholder="Password" required><br>
+			<input class="spc" type="submit" name="alogin" value="LOGIN">
+		</form>
+		
+	</div>
+</body>
+</html>
