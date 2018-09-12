@@ -1,7 +1,7 @@
 <h1>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;WELCOME TO ADMIN PAGE<h1>
     <div class="container">
     <div class="jumbotron mt-2">
-    <h3 align="center">Delishoes Dashboard</h3><hr>
+    <h3 align="center">Dashboard</h3><hr>
         <div class="row">
             <div class="col-md-5" style="margin: 0 40px">
             <h5 align="center">Top 10 Customers with Most No. of Orders</h5>
@@ -38,7 +38,7 @@
                             {{#each topCustomersHighestPayment}}
                             <tr>
                                 <td align="left">{{this.first_name}}  {{this.last_name}}</td>
-                                <td align="left">Php {{number this.sum}}.00</td>
+                                <td align="left">Php {{ this.sum}}.00</td>
                             </tr>
                             {{/each}}
                         </tbody>

@@ -14,11 +14,7 @@ const Category = require('./models/category');
 const Handlebars = require('handlebars');
 const MomentHandler = require('handlebars.moment');
 MomentHandler.registerHelpers(Handlebars);
-// const Product = require('./models/product');
-// const Brand = require('./models/brand');
-// const Customer = require('./models/customer');
-// const Order = require('./models/order');
-// const Category = require('./models/category')
+
 
 // const PORT = process.env.PORT || 3000
 
