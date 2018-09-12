@@ -52,11 +52,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //-----------------admin side ---------------------
-app.get('/admin', function (req, res) {
-  res.render('admin/admin', {
-    layout: 'admin'
+app.get('/admin', function(req, res) {
+  var topCustomersMostOrder;
+  Customer.topCustomersMostOrder(client, {},function(result){
+    topCustomersMostOrder = result
+  });
+  Customer.topCustomersHighestPayment(client,{},function(result){
+      res.render('admin/admin', {
+      layout: 'admin',
+      topCustomersHighestPayment : result,
+      topCustomersMostOrder : topCustomersMostOrder
+    });
   });
 });
+
 app.get('/admin/products', function (req, res) {
   client.query(`SELECT 
       products.id AS products_id,
