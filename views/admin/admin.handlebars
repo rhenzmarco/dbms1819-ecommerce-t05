@@ -2,8 +2,7 @@
     <div class="container">
     <div class="jumbotron mt-2">
     <h3 align="center">Dashboard</h3><hr>
-        <div class="row">
-            <div class="col-md-5" style="margin: 0 40px">
+            <div class="col-md-5" style="margin: 0 300px">
             <h5 align="center">Top 10 Customers with Most No. of Orders</h5>
                 <div class="row justify-content-center">
                     <table class="table text-center">
@@ -24,7 +23,7 @@
                     </table>
                 </div>
             </div>
-            <div class="col-md-5" style="margin: 0 40px">
+            <div class="col-md-5" style="margin: 0 300px">
             <h5 align="center">Top 10 Customers with Highest Payment</h5>
                 <div class="row justify-content-center">
                     <table class="table text-center">
@@ -45,6 +44,160 @@
                     </table>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+        
+          <div class="col-md-5" style="margin: 0 300px">
+            <h5 align="center">Top 10 Products | Most Ordered</h5>
+                <div class="row justify-content-center">
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+                                <th>Product Model Name</th>
+                                <th>Number of Orders</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           {{#each mostOrderedProduct}}
+                            <td>{{this.products_name}}</td>
+                            <td>{{this.total}}</td>
+                          </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    
+   
+
+          <div class="col-md-5" style="margin: 0 300px">
+            <h5 align="center">Top 10 Products | Least Ordered</h5>
+                <div class="row justify-content-center">
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+                                <th>Product Model Name</th>
+                                <th>Number of Orders</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                             {{#each leastOrderedProduct}}
+                            <td>{{this.products_name}}</td>
+                            <td>{{this.total}}</td>
+                          </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+<div class="col-md-5" style="margin: 0 300px">
+           <h5 align="center">Top 3 Most Ordered Brands</h5>
+                <div class="row justify-content-center">
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+                                <th>Brand Name</th>
+                                 <th>Number of Orders</th>
+                              </tr>
+                        </thead>
+                        <tbody>
+                             {{#each mostOrderedBrand}}
+                        <tr>
+                             <td>{{this.brand_name}}</td>
+                             <td>{{this.total}}</td>
+                        </tr>
+                              {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+<div class="col-md-5" style="margin: 0 300px">
+           <h5 align="center">Top 3 Most Ordered Categories</h5>
+                <div class="row justify-content-center">
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+                                <th>Category Name</th>
+                                 <th>Number of Orders</th>
+                              </tr>
+                        </thead>
+                        <tbody>
+                             {{#each mostOrderedCategory}}
+                        <tr>
+                             <td>{{this.category_name}}</td>
+                             <td>{{this.total}}</td>
+                        </tr>
+                              {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+<div class="col-md-5" style="margin: 0 300px">
+           <h5 align="center">Total Sales</h5>
+                <div class="row justify-content-center">
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+                               <th>For the last 7 Days</th>
+                               <th>For the last 30 Days</th>
+                              </tr>
+                        </thead>
+                        <tbody>
+                        
+                        <tr>
+                    <td>Php {{ totalSalesLast7days}}.00</td>
+                    <td>Php {{ totalSalesLast30days}}.00</td>
+                        </tr>
+                              
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+<div class="col-md-5" style="margin: 0 300px">
+           <h5 align="center">Daily Order Counts</h5>
+                <div class="row justify-content-center">
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+                               <th>Order Count in the Last 8 days</th>
+                              </tr>
+                        </thead>
+                          <tbody>
+                            <tr>
+                                <td>This day: {{zeroDaysAgo}} order/s acquired.</td>
+                            </tr>
+                            <tr>
+                                <td>1 day ago: {{oneDaysAgo}} order/s acquired.</td>
+                            </tr>
+                            <tr>
+                                <td>2 days ago: {{twoDaysAgo}} order/s acquired.</td>
+                            </tr>
+                            <tr>
+                                <td>3 days ago: {{threeDaysAgo}} order/s acquired.</td>
+                            </tr>
+                            <tr>
+                                <td>4 days ago: {{fourDaysAgo}} order/s acquired.</td>
+                            </tr>
+                            <tr>
+                                <td>5 days ago: {{fiveDaysAgo}} order/s acquired.</td>
+                            </tr>
+                            <tr>
+                                <td>6 days ago: {{sixDaysAgo}} order/s acquired.</td>
+                            </tr>
+                            <tr>
+                                <td>7 days ago: {{sevenDaysAgo}} order/s acquired.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+
+
+
+
+

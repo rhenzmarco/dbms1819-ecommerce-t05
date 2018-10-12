@@ -1,4 +1,3 @@
-
 var Customer = {
   getById: (client, customerId, callback) => {
     const customerQuery = `SELECT
@@ -59,7 +58,7 @@ var Customer = {
         ORDER BY SUM DESC LIMIT 10;
     `;
     client.query(query,(req,result)=>{
-      console.log(result.rows)
+      // console.log(result.rows);
       callback(result.rows)
     });
   },
@@ -73,9 +72,11 @@ var Customer = {
         ORDER BY COUNT DESC LIMIT 10;
     `;
     client.query(query,(req,result)=>{
-      console.log(result.rows);
+      // console.log(result.rows);
       callback(result.rows)
     });
   }
 };
 module.exports = Customer;
+
+
