@@ -1,11 +1,12 @@
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 const express = require('express');
 const path = require('path');
-const { Client } = require('pg');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
-const moment = require('moment');
+const config = require('./config.js');
+const { Client } = require('pg');
+// console.log('config db', config.db);
+// const client = new Client(config.db);
 const Product = require('./models/product');
 const Brand = require('./models/brand');
 const Customer = require('./models/customer');
@@ -14,10 +15,15 @@ const Category = require('./models/category');
 const Handlebars = require('handlebars');
 const MomentHandler = require('handlebars.moment');
 MomentHandler.registerHelpers(Handlebars);
+const PORT = process.env.PORT || 4000
+const NumeralHelper = require("handlebars.numeral");
+NumeralHelper.registerHelpers(Handlebars);
+const passport = require('passport');
+const Strategy = require('passport-local').Strategy;
+const session = require('express-session');
 
 
-// const PORT = process.env.PORT || 3000
-
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 const client = new Client({
   database: 'dd3c9ddqhmqsf1',
   user: 'blyngucjcpjbdl',
@@ -35,6 +41,11 @@ client.connect()
   });
 
 const app = express();
+var role;
+
+app.use(session({ secret: 'tengakomalaki', resave: false, saveUninitialized: false }));
+
+
 // tell express which folder is a static/public folder
 app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -47,8 +58,67 @@ app.use(express.static(path.join(__dirname, 'static1')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use(passport.initialize()); 
+app.use(passport.session());
+
+ //Authentication and Session--------------------------------------------
+passport.use(new Strategy({
+  usernameField: 'email',
+  passwordField: 'password'
+},
+  function(email, password, cb) {
+    Customer.getByEmail(client,email, function(user) {
+      if (!user) { return cb(null, false); }
+    
+      return cb(null, user);
+    });
+  })
+);
+ passport.serializeUser(function(user, cb) {
+  cb(null, user.id);
+});
+ passport.deserializeUser(function(id, cb) {
+  Customer.getById(client,id, function (user) {
+    cb(null, user);
+  });
+});
+ function isAdmin(req, res, next) {
+   if (req.isAuthenticated()) {
+  Customer.getCustomerData(client,{id: req.user.id}, function(user){
+    role = user[0].user_type;
+    console.log('role:',role);
+    if (role == 'admin') {
+        return next();
+    }
+    else{
+      res.send('cannot access!');
+    }
+  });
+  }
+  else{
+res.redirect('/login');
+}
+}
+function isCustomer(req, res, next) {
+   if (req.isAuthenticated()) {
+  Customer.getCustomerData(client,{id: req.user.id}, function(user){
+    role = user[0].user_type;
+    console.log('role:',role);
+    if (role == 'customer') {
+        return next();
+    }
+    else{
+      res.send('cannot access!');
+    }
+  });
+  }
+  else{
+res.redirect('/login');
+}
+}
+
 //-----------------admin side ---------------------
-app.get('/admin', function(req, res) {
+app.get('/admin',isAdmin,  function(req, res) {
   var thisDay;
   var oneDayAgo;
   var twoDaysAgo;
@@ -184,7 +254,7 @@ app.get('/admin/brand/create', function (req, res) {
   res.render('admin/create-brand',{layout: 'admin'});
 });
 
-app.get('/admin/category/create', (req, res) => {
+app.get('/admin/category/create',(req, res) => {
   res.render('admin/create-category',{layout:'admin'});
 });
 
@@ -565,7 +635,7 @@ app.get('/product/update/:id', function (req, res) {
     });
 });
 
-app.get('/products/:id', function (req, res) {
+app.get('/products/:id', isCustomer, function (req, res) {
   client.query('SELECT products.id AS products_id, products.image AS products_image, products.name AS products_name, products.description AS products_description, products.tagline AS products_tagline, products.price AS products_price, products.warranty AS products_warranty, brands.brand_name AS brand_name, brands.brand_description AS brand_description, products_category.product_category_name AS category_name FROM products INNER JOIN brands ON products.brand_id=brands.id INNER JOIN products_category ON products.category_id=products_category.id WHERE products.id = ' + req.params.id + '; ')
     .then((results) => {
       console.log('results?', results);
@@ -590,12 +660,31 @@ app.get('/products/:id', function (req, res) {
 
 
 /////login------
-
 app.get('/login', function (req, res) {
   res.render('login');
 });
+app.post('/login', 
+  passport.authenticate('local', { failureRedirect: '/login' }),
+  function(req, res) {
+  Customer.getById(client, req.user.id, function(user){
+    role = user.user_type;
+    req.session.user = user;
+      console.log(req.session.user);
+    console.log('role:',role);
+    if (role == 'customer'){
+        res.redirect('/')
+    }
+    else if (role == 'admin'){
+        res.redirect('/admin')
+    }
+     });
+  });
 app.get('/signup', function (req, res) {
   res.render('signup');
+});
+app.post('/signup', (req,res) => {
+  client.query("INSERT INTO customers(first_name, middle_name, last_name, state, city, street, zipcode, email, password, user_type) VALUES ('" + req.body.fname + "','" + req.body.mname + "','" + req.body.lname + "','" + req.body.state + "','" + req.body.city + "','" + req.body.street + "','" + req.body.zipcode + "','" + req.body.email + "','" + req.body.password + "','" + req.body.user_type + "');");
+  res.redirect('/login');
 });
 app.listen(app.get('port'), function () {
   console.log('Server started at port 3000');
